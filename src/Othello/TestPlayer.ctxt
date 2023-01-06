@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=TestPlayer
+comment0.text=\n\ Test\ player\n
+comment1.params=color
+comment1.target=TestPlayer(int)
+comment1.text=\n\ Constructor\n\ @param\ name\ Player's\ name\n\ @param\ color\ Player\ color\:\ one\ of\ Constants.BLACK\ or\ Constants.WHITE\n
+numComments=2

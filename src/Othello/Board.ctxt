@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Board
+comment0.text=\n\ Represents\ the\ game\ board\n\ \n\ @author\ Mr.\ Jaffe\n\ @version\ 1.0\n
+comment1.params=
+comment1.target=Board()
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Board\n
+comment2.params=toMatch
+comment2.target=int\ countSquares(int)
+comment2.text=\n\ Count\ the\ number\ of\ squares\ of\ the\ provided\ type\n\ @param\ toMatch\ Type\ of\ square\ to\ count\ from\ Constants.xxxx\n\ @return\ Number\ of\ squares\ that\ match\ the\ desired\ target\n
+comment3.params=idx
+comment3.target=boolean\ indexInRange(int)
+comment3.text=\n\ Is\ the\ index\ in\ range?\n\ @param\ idx\ Index\ to\ check\n\ @return\ True\ if\ 0\ <\=\ idx\ <\ Constants.SIZE\n
+comment4.params=player
+comment4.target=boolean\ noMovesAvailable(Player)
+comment4.text=\n\ Are\ there\ any\ available\ for\ this\ player?\n\ @param\ player\ Player\ asking\n\ @return\ True\ if\ moves\ are\ available\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+numComments=6
