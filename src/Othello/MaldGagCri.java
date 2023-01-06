@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Test player
  */
 public class MaldGagCri extends Player {
-
+  // i am cool
   /**
    * Constructor
    * @param name Player's name
