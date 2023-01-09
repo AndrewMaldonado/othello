@@ -26,9 +26,42 @@ public class MaldGagCri extends Player {
      */
     @Override
     public Position getNextMove(Board board) {
-        int minimax(int depth);
+        ArrayList<Position> list = this.getLegalMoves(board);
+        if (list.size() > 0) {
+            int idx = (int) (Math.random() * list.size());
+            return list.get(idx);
+        } else {
+            return null;
+        }
     }
-    
+    // Returns the optimal value a maximizer can obtain.
+    // depth is current depth in game tree.
+    // nodeIndex is index of current node in scores[].
+    // isMax is true if current move is of maximizer, else false
+    // scores[] stores leaves of Game tree.
+    // h is maximum height of Game tree
+    int depth = 22;
+    static int minimax(int depth, int nodeIndex, boolean Max,
+    int scores[], int h)
+    {
+        // Terminating condition. i.e leaf node is reached
+        if (depth == h)
+            return scores[nodeIndex];
+
+        // If current move is maximizer, find the maximum attainable
+        // value
+        if (Max)
+            return Math.max(minimax(depth+1, nodeIndex*2, false, scores, h),
+                minimax(depth+1, nodeIndex*2 + 1, false, scores, h));
+
+        // Else (If current move is Minimizer), find the minimum
+        // attainable value
+        else
+            return Math.min(minimax(depth+1, nodeIndex*2, true, scores, h),
+                minimax(depth+1, nodeIndex*2 + 1, true, scores, h));
+    }
+
+    // This code is contributed by vt_m
     /**
      * Is this a legal move?
      * @param player Player asking
