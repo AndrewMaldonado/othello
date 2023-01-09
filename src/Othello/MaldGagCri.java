@@ -25,10 +25,9 @@ public class MaldGagCri extends Player {
      * @param board
      * @return The player's next move
      */
-    @Override
     public Position getNextMove(Board board, int depth, int max_depth, int chosen_score) {
         ArrayList<Position> list = this.getLegalMoves(board);
-        if (depth = max_depth) {
+        if (depth == max_depth) {
             chosen_score = evaluation(board);
         } else {
             list = generate_moves(board);
@@ -45,7 +44,7 @@ public class MaldGagCri extends Player {
                         Position best_move = the_move;
                     }
                 }
-                int chosen_score = best_score;
+                chosen_score = best_score;
                 Position chosen_move = best_move;
             }
         }
