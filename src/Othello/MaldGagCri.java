@@ -25,28 +25,14 @@ public class MaldGagCri extends Player {
      * @param board
      * @return The player's next move
      */
-    public Position getNextMove(Board board, int depth, int max_depth, int chosen_score) {
+    public Position getNextMove(Board board, int depth, int max_dept) {
         ArrayList<Position> list = this.getLegalMoves(board);
-        if (depth == max_depth) {
-            chosen_score = evaluation(board);
-        } else {
-            list = generate_moves(board);
-            if (list == null) {
-                chosen_score = evaluation(board);
-            } else {
-                for (int i = 1; i < list.size(); i++) {
-                    best_score = infinity;
-                    new_board = board;
-                    apply_move(new_board, moves_list[i]);
-                    minimax(new_board, depth+1, max_depth, the_score, the_move);
-                    if (better(the_score, best_score)) {
-                        int best_score = the_score;
-                        Position best_move = the_move;
-                    }
-                }
-                chosen_score = best_score;
-                Position chosen_move = best_move;
-            }
+        if (depth == 0 || list.size() == 0){
+            return null;
+        }
+        
+        if (list.size() > 0){
+            
         }
     }
 
