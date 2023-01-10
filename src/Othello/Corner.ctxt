@@ -1,11 +1,11 @@
 #BlueJ class context
-comment0.target=MaldGagCri
+comment0.target=Corner
 comment0.text=\n\ Test\ player\n
 comment1.params=color
-comment1.target=MaldGagCri(int)
+comment1.target=Corner(int)
 comment1.text=\n\ Constructor\n\ @param\ name\ Player's\ name\n\ @param\ color\ Player\ color\:\ one\ of\ Constants.BLACK\ or\ Constants.WHITE\n
-comment2.params=depth\ nodeIndex\ Max\ scores\ h
-comment2.target=int\ minimax(int,\ int,\ boolean,\ int[],\ int)
+comment2.params=depth\ nodeIndex\ Max\ moves\ md
+comment2.target=int\ minimax(int,\ int,\ boolean,\ java.util.ArrayList,\ int)
 comment3.params=board
 comment3.target=Position\ getNextMove(Board)
 comment3.text=\n\n\ @param\ board\n\ @return\ The\ player's\ next\ move\n

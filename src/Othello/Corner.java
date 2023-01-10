@@ -8,21 +8,24 @@ import java.util.ArrayList;
 /**
  * Test player
  */
-public class MaldGagCri extends Player {
-
+public class Corner extends Player {
+    
+    public ArrayList<Integer> mvs = new ArrayList<Integer>();
+    
     /**
      * Constructor
      * @param name Player's name
      * @param color Player color: one of Constants.BLACK or Constants.WHITE
      */
-    public MaldGagCri(int color) {
+    public Corner(int color) {
         super(color);
     }
-
+    
     int depth = 22;
     static int minimax(int depth, int nodeIndex, boolean Max,
-    ArrayList<Position> moves, int md)
+    ArrayList<Integer> moves, int md)
     {
+        
         // Terminating condition. i.e leaf node is reached
         if (depth == md)
             return moves.get(nodeIndex);
@@ -48,8 +51,13 @@ public class MaldGagCri extends Player {
     @Override
     public Position getNextMove(Board board) {
         ArrayList<Position> list = this.getLegalMoves(board);
+        
+        for (int i = 0; i < list.size(); i++){
+            mvs.add(list.get(i).getRow()+list.get(i).getCol());
+        }
+        
         if (list.size() > 0) {
-            int idx = minimax(0, 1, false, list, 4);
+            int idx = minimax(0, 1, false, mvs, 4);
             return list.get(idx);
         } else {
             return null;
