@@ -28,16 +28,15 @@ public class Corner extends Player {
         
         // Terminating condition. i.e leaf node is reached
         if (depth == md){
-            depth = md;
             return moves.get(nodeIndex);
         }
         // If current move is maximizer, find the maximum attainable value
-        if (Max && depth != md){
+        if (Max){
             return Math.max(minimax(depth+1, nodeIndex*2, false, moves, md),
                 minimax(depth+1, nodeIndex*2 + 1, false, moves, md));
             }
-        // Else (If current move is Minimizer), find the minimum attainable value
-        else if (depth != md){
+        // Else (If current move is Minimizer), find the minimumattainable value
+        else{
             return Math.min(minimax(depth+1, nodeIndex*2, true, moves, md),
                 minimax(depth+1, nodeIndex*2 + 1, true, moves, md));
             }
