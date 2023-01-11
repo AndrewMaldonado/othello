@@ -21,26 +21,26 @@ public class Corner extends Player {
         super(color);
     }
     
-    int depth = 22;
+    int depth = 1;
     static int minimax(int depth, int nodeIndex, boolean Max,
     ArrayList<Integer> moves, int md)
     {
         
         // Terminating condition. i.e leaf node is reached
-        if (depth == md)
+        if (depth == md){
+            depth = md;
             return moves.get(nodeIndex);
-
-        // If current move is maximizer, find the maximum attainable
-        // value
-        if (Max)
+        }
+        // If current move is maximizer, find the maximum attainable value
+        if (Max && depth != md){
             return Math.max(minimax(depth+1, nodeIndex*2, false, moves, md),
                 minimax(depth+1, nodeIndex*2 + 1, false, moves, md));
-
-        // Else (If current move is Minimizer), find the minimum
-        // attainable value
-        else
+            }
+        // Else (If current move is Minimizer), find the minimum attainable value
+        else if (depth != md){
             return Math.min(minimax(depth+1, nodeIndex*2, true, moves, md),
                 minimax(depth+1, nodeIndex*2 + 1, true, moves, md));
+            }
     }
 
     /**
@@ -51,24 +51,25 @@ public class Corner extends Player {
     @Override
     public Position getNextMove(Board board) {
         ArrayList<Position> list = this.getLegalMoves(board);
-        
+        mvs.clear();
         for (int i = 0; i < list.size(); i++){
             mvs.add(list.get(i).getRow()+list.get(i).getCol());
         }
         
         if (list.size() > 0) {
-            int idx = minimax(0, 1, false, mvs, 4);
+            int idx = minimax(0, 0, false, mvs, 4);
             return list.get(idx);
+            
         } else {
             return null;
         }
     }
     // Returns the optimal value a maximizer can obtain.
     // depth is current depth in game tree.
-    // nodeIndex is index of current node in scores[].
-    // isMax is true if current move is of maximizer, else false
-    // scores[] stores leaves of Game tree.
-    // md is maximum height of ma dic
+    // nodeIndex is index of current node in moves[].
+    // Max is true if current move is of maximizer, else false
+    // moves[] stores leaves of Game tree.
+    // md is maximum height of madic
 
     /**
      * Is this a legal move?
