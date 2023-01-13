@@ -21,25 +21,30 @@ public class Corner extends Player {
         super(color);
     }
     
-    int depth = 1;
+    int depth = 0;
+    private static int pd = 0;
     static int minimax(int depth, int nodeIndex, boolean Max,
     ArrayList<Integer> moves, int md)
     {
-        
         // Terminating condition. i.e leaf node is reached
         if (depth == md){
+            pd = depth;
             return moves.get(nodeIndex);
         }
+        
         // If current move is maximizer, find the maximum attainable value
-        if (Max){
-            return Math.max(minimax(depth+1, nodeIndex*2, false, moves, md),
+        if (Max && pd != md){
+            return Math.min(minimax(depth+1, nodeIndex*2, false, moves, md),
                 minimax(depth+1, nodeIndex*2 + 1, false, moves, md));
             }
         // Else (If current move is Minimizer), find the minimumattainable value
-        else{
+        else if (pd != md){
             return Math.min(minimax(depth+1, nodeIndex*2, true, moves, md),
                 minimax(depth+1, nodeIndex*2 + 1, true, moves, md));
             }
+        else {
+            return moves.size()-1;
+        }
     }
 
     /**
@@ -54,8 +59,9 @@ public class Corner extends Player {
         for (int i = 0; i < list.size(); i++){
             mvs.add(list.get(i).getRow()+list.get(i).getCol());
         }
-        
         if (list.size() > 0) {
+            System.out.println(mvs);
+            //mvs.clear();
             int idx = minimax(0, 0, false, mvs, 4);
             return list.get(idx);
             

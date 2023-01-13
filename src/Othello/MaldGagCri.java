@@ -21,7 +21,7 @@ public class MaldGagCri extends Player {
 
     int depth = 22;
     static int minimax(int depth, int nodeIndex, boolean Max,
-    ArrayList<Position> moves, int md)
+    ArrayList<Integer> moves, int md)
     {
         // Terminating condition. i.e leaf node is reached
         if (depth == md)
@@ -49,7 +49,7 @@ public class MaldGagCri extends Player {
     public Position getNextMove(Board board) {
         ArrayList<Position> list = this.getLegalMoves(board);
         if (list.size() > 0) {
-            int idx = minimax(0, 1, false, list, 4);
+            int idx = minimax(0, 1, false, , 4);
             return list.get(idx);
         } else {
             return null;
